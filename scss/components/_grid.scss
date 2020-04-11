@@ -1,0 +1,105 @@
+
+
+//=============== Grid Layout =================
+
+.container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "admin-panel"
+    "main-nav"
+    "dashboard";
+    @include mq($med) {
+        grid-template-columns: 55px auto;
+        grid-template-rows: 55px auto;
+        grid-template-areas: 
+        "admin-panel admin-panel"
+        "main-nav dashboard"
+    }
+}
+
+.admin-panel {
+    grid-area: admin-panel;
+    background-color: $color-primary;
+}
+
+.main-nav {
+    grid-area: main-nav;
+    background-color: $color-secondary;
+    & li {
+        padding: 0;
+        @include mq($med) {
+            padding-bottom: 20px;
+        }
+    }
+}
+
+.dashboard {
+    grid-area: dashboard;
+    padding: 5px;
+    display: grid;
+    grid-template-areas: 
+    "main-header"
+    "traffic"
+    "daily-traffic"
+    "mobile-users"
+    "social-status"
+    "new-members"
+    "recent-activity"
+    "message-user"
+    "settings";
+    @include mq($med) {
+        padding: 20px;
+        grid-template-columns: 50%;
+        // grid-template-rows: repeat(6, minmax(200px, auto));
+        grid-template-areas:
+        "main-header main-header"
+        "traffic traffic"
+        "daily-traffic mobile-users"
+        "social-status social-status"
+        "new-members recent-activity"
+        "message-user settings"
+    }
+}
+
+.main-header {
+    grid-area: main-header;
+}
+
+.traffic {
+    grid-area: traffic;
+}
+
+.daily-traffic {
+    grid-area: daily-traffic;
+}
+
+.mobile-users {
+    grid-area: mobile-users;
+}
+
+.social-status {
+    grid-area: social-status;
+    background-color: turquoise;
+}
+
+.new-members {
+    grid-area: new-members;
+    background-color: violet;
+}
+
+.recent-activity {
+    grid-area: recent-activity;
+    background-color: skyblue;
+}
+
+.message-user {
+    grid-area: message-user;
+    background-color: yellowgreen;
+}
+
+.settings {
+    grid-area: settings;
+    background-color: blue;
+}

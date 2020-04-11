@@ -1,0 +1,8 @@
+@include mq($med) {
+    .widget-container-full {
+        width: 90vw;
+    }
+    .widget-container-half {
+        width: 45vw;
+    }
+}

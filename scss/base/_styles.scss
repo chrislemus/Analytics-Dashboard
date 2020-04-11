@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+}
+
+
+
+.widget-container-full, .widget-container-half {
+    width: 95vw;
+}
+
+//===========================
+//===== admin panel =========
+//===========================
+
+.admin-panel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    & h1 {
+        margin-right: auto;
+    }
+    & h3 {
+        font-size: 1em;
+    }
+}
+
+.admin-account {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 80%;
+    padding-left: 10px;
+    border-left: 1.2px solid $color-secondary;
+}
+
+.bell-icon {
+    margin-right: 1em;
+    height: 1.5em;
+    width: 1.5em;
+}
+
+.admin-pic {
+    margin-right: 5px;
+    width: 1.8em;
+    height: 1.8em;
+}
+
+.panel-items {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+.alert-banner {
+    width: auto;
+    background-color: $color-primary;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+//===========================
+//===== main dashboard styles =========
+//===========================
+
+.divider-x:after {
+    position:relative;
+    content: " ";
+    display:block;
+    height:40px;
+    border-bottom: 1px solid $color-dark-grey;
+    left: -5px;
+    width: calc(100% + 5px);
+    @include mq($lg) {
+        left: -20px;
+        width: calc(100% + 40px);
+    }
+}
+.divider-y {
+    border-right: 1px solid black;
+}

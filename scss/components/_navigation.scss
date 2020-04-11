@@ -1,0 +1,35 @@
+
+.main-nav ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    @include mq($med) {
+        flex-direction: column;
+        padding: 0;
+    }
+}
+
+.admin-panel {
+    list-style-type: none;
+    display: flex;
+    padding-left: 1em;
+    padding-right: 1em;
+}   
+
+.main-nav li {
+    padding-bottom: 20px;
+}
+
+.active-page {
+    background-color: red;
+}
+
+//  ------ICONS------
+
+.nav-icons {
+    fill: $color-bg-grey;
+    width: 20px;
+    height: 20px;
+}
