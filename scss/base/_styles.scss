@@ -35,25 +35,34 @@
 }
 
 .bell-icon {
+    fill: $color-dark-grey;
     margin-right: 1em;
     height: 1.5em;
     width: 1.5em;
-    fill: $color-white;
-    :hover {
+    stroke: transparent;
+    stroke-width: 100px;
+    :hover{
         cursor: pointer;
-        fill: $color-dark-grey;
-        stroke: transparent;
-        stroke-width: 100px;
     }
     
 }
+
+svg {
+    transition:.25s ease-in-out;
+}
+
+svg:hover {
+    transform: scale(1.1);
+    fill: $color-white;
+}
+
 
 #bell-on {
     display: none;
     height: 7px;
     width: 7px;
     position: absolute;
-    right: 38%;
+    right: 45%;
     top: 1%;
     background-color: $color-green;
     border-radius: 50%;
@@ -140,7 +149,6 @@
     display: flex;
     flex-wrap: wrap;
     padding-top: 1em;
-    // margin-right: -1em;
     justify-items: center;
     background-color: $color-bg-grey;
     border-bottom: 1px solid $color-dark-grey;
@@ -192,8 +200,12 @@
     border-radius: 50%;
     display: flex;
     & svg {
-        width: 50px;
-        height: 50px;
+        width: 30px;
+        height: 30px;
+        @include mq($med) {
+            width: 50px;
+            height: 50px;
+        }
     }
 }
 
@@ -215,9 +227,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     height: auto;
-    // @include mq($med) {
-    //     height: 3.2em;
-    // }
     img {
         border-radius: 50%;
         height: 50px;
@@ -230,7 +239,6 @@
         margin-bottom: 0;
     }
     div {
-        // font-size: .7em;
         margin-top: auto;
         margin-bottom: auto;
         display: flex;
@@ -299,7 +307,6 @@
 #user-search-results {
     list-style: none;
     top: 70%;
-    // left: -6.5%;
     justify-self: center;
     position: absolute;
     display: none;
@@ -313,7 +320,6 @@
         padding-bottom: .5em;
         background-color: $color-bg-grey;
         width: 100%;
-        // border-bottom: 1px solid $color-dark-grey;
     }
 }
 
