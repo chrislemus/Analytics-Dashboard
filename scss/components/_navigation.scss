@@ -29,7 +29,7 @@
 //  ------ICONS------
 
 .nav-icons {
-    fill: $color-bg-grey;
+    fill: $color-dark-grey;
     width: 20px;
     height: 20px;
 }
@@ -76,4 +76,11 @@
         border-bottom: none;
         border-left: 3px solid $color-green;
     }
+    svg {
+        fill: $color-white;
+    }
 }
+
+// .nav-icons use{
+//     fill: red;
+// }

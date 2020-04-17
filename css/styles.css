@@ -814,7 +814,7 @@ a {
 }
 
 .nav-icons {
-  fill: #fbfbfb;
+  fill: #b2b2b2;
   width: 20px;
   height: 20px;
 }
@@ -858,6 +858,9 @@ a {
     border-bottom: none;
     border-left: 3px solid #81c98f;
   }
+}
+.nav-selected svg {
+  fill: #fff;
 }
 
 .container {

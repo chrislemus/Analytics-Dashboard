@@ -155,8 +155,8 @@ userResults.addEventListener('click', e => {
 user.addEventListener('focusout', () => {
   //timeout function is set to let user click on member before results dissapear
   setTimeout(function() {
-    userResults.style.display = "none";;
-  }, 190)
+    userResults.style.display = "none";
+  }, 190);
 });
 
 
