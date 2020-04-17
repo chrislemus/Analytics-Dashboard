@@ -5,20 +5,22 @@
   <meta charset="utf-8">
   <title>WebApp Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/toggle-switch.css" />
   <link rel="stylesheet" href="css/styles.css">
-  <!-- does it matter if i set script tag below in head or after body? -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </head>
 
 <body class="container">
   <header class="admin-panel">
     <h1 class="panel-items">YourApp</h1>
     <div class="panel-items">
-      <svg class="bell-icon">
-        <use xlink:href="icons/sprite.svg#icon-bell" />
-      </svg>
-      <div id="notifications">
-
+      <div class="bell-container">
+        <svg class="bell-icon">
+          <use xlink:href="icons/sprite.svg#icon-bell" />
+        </svg>
+        <div id="bell-on"></div>
+        <ul id="notifications" class="no-show">
+          <!-- JS will add notification here -->
+        </ul>
       </div>
     </div>
     <div class="admin-account panel-items">
@@ -28,8 +30,8 @@
   </header>
 
   <nav class="main-nav">
-    <ul>
-      <li>
+    <ul class="main-nav-ul">
+      <li class="nav-selected">
         <a href="#">
           <svg class="nav-icons">
             <use xlink:href="icons/sprite.svg#icon-dashboard" />
@@ -71,14 +73,14 @@
       </div>
     </div>
     <!-- line graph charts -->
-    <section class="traffic divider-x">
+    <section class="traffic">
       <div class="traffic-header"> 
         <h3>Traffic</h3>
         <ul class="traffic-nav">
           <li class="traffic-nav-link">Hourly</li>
           <li class="traffic-nav-link">Daily</li>
           <li class="traffic-nav-link">Weekly</li>
-          <li class="traffic-nav-link">Monthly</li>
+          <li class="traffic-nav-link data-show">Monthly</li>
         </ul>
       </div>
       <div class="widget-container-full">
@@ -102,37 +104,40 @@
     </section>
     <!-- social stats -->
     <section class="social-status">
-      <div class="social-container">
-        <div class="social-image">
-          <svg>
-            <use xlink:href="icons/sprite.svg#icon-twitter"/>
-          </svg>    
+      <h3>Social Status</h3>
+      <div class="social-wrapper">
+        <div class="social-container">
+          <div class="social-image">
+            <svg>
+              <use xlink:href="icons/sprite.svg#icon-twitter"/>
+            </svg>    
+          </div>
+          <div class="social-text">
+            <p>Twitter</p>
+            <p>10,345</p>
+          </div>
         </div>
-        <div class="social-text">
-          <p>Twitter</p>
-          <p>10,345</p>
+        <div class="social-container">
+          <div class="social-image">
+            <svg>
+              <use xlink:href="icons/sprite.svg#icon-facebook"/>
+            </svg>    
+          </div>
+          <div class="social-text">
+            <p>Facebook</p>
+            <p>8,739</p>
+          </div>
         </div>
-      </div>
-      <div class="social-container">
-        <div class="social-image">
-          <svg>
-            <use xlink:href="icons/sprite.svg#icon-facebook"/>
-          </svg>    
-        </div>
-        <div class="social-text">
-          <p>Facebook</p>
-          <p>8,739</p>
-        </div>
-      </div>
-      <div class="social-container">
-        <div class="social-image">
-          <svg>
-            <use xlink:href="icons/sprite.svg#icon-google-plus"/>
-          </svg>    
-        </div>
-        <div class="social-text">
-          <p>Google</p>
-          <p>2,530</p>
+        <div class="social-container">
+          <div class="social-image">
+            <svg>
+              <use xlink:href="icons/sprite.svg#icon-google-plus"/>
+            </svg>    
+          </div>
+          <div class="social-text">
+            <p>Google</p>
+            <p>2,530</p>
+          </div>
         </div>
       </div>
     </section>
@@ -214,34 +219,63 @@
     <section class="message-user">
       <h3>Message User</h3>
 
-      <form class="widget-container">
-        <input type="text" placeholder="Search for user" class="form-field" id="userField">
-        <textarea placeholder="Message for user" class="form-area" id="messageField" ></textarea>
+      <form class="widget-container" autocomplete="off">
+        <div id="search-container">
+          <input type="text" onkeyup="filterResults()"  placeholder="Search for user" class="form-field" id="userField">
+            <ul id="user-search-results">
+              <!-- JS will enter data here -->
+            </ul>
+        </div>
+        <textarea placeholder="Message for user" rows="8" class="form-area" id="messageField" ></textarea>
         <button class="button-primary" id="send">Send</button>
       </form>
     </section>
     <!-- local settings widget -->
     <section class="settings">
       <h3>Settings</h3>
-
+      
       <!-- custom CSS toggle code -->
-
+      <label class="switch-light switch-ios" onclick="">
+        <input type="checkbox" id="emailNotifications">
+        <strong> 
+          Send Email Notifications
+        </strong>
+        <span>
+          <span>Off</span>
+          <span>On</span>
+          <a></a>
+        </span>
+      </label>
       <!-- custom CSS toggle code -->
+      <label class="switch-light switch-ios" onclick="">
+        <input type="checkbox" id="profile-public">
+        <strong> 
+          Set Profile to Public
+        </strong>
+        <span>
+          <span>Off</span>
+          <span>On</span>
+          <a></a>
+        </span>
+      </label>
 
       <select class="form-field" id="timezone">
         <option disabled selected>Select a Timezone</option>
         <option>Eastern</option>
         <!-- more options -->
       </select>
+      <p id="setting-success">settings have been updated!</p>
       <div class="settings-button" >
-        <button class="button-primary" id="save">Save</button>
-        <button class="button-disabled" id="cancel">Cancel</button>
+        <button class="button-primary">Save</button>
+        <button class="button-disabled">Cancel</button>
       </div>
         
 
     </section>
 
   </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+  <script src="js/data.js"></script>
   <script src="js/script.js"></script>
 </body>
 

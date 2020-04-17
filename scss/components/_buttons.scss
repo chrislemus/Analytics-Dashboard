@@ -1,0 +1,39 @@
+//===========================
+//===== BUTTON styles =========
+//===========================
+
+.button-primary,
+.button-disabled {
+    padding: .9em;
+    color: $color-white;
+    font-weight: bold;
+    border: none;
+    border-radius: .3em;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.button-primary {
+    background-color: $color-primary;
+    &:hover {
+        background-color: lighten($color-primary, 5%);
+    }
+}
+
+.button-disabled {
+    background-color: $color-dark-grey;
+    &:hover {
+        background-color: lighten($color-dark-grey, 5%);
+    }
+}
+
+.alert-banner-close {
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-bottom: auto;
+    margin-top: auto;
+    &:hover {
+        cursor: pointer;
+    }
+}

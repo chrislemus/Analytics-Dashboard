@@ -3,6 +3,9 @@
 //=============== Grid Layout =================
 
 .container {
+    // margin: 0;
+    // width: 100%;
+    background-color: $color-dark-grey;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto;
@@ -27,18 +30,12 @@
 .main-nav {
     grid-area: main-nav;
     background-color: $color-secondary;
-    & li {
-        padding: 0;
-        @include mq($med) {
-            padding-bottom: 20px;
-        }
-    }
 }
 
 .dashboard {
     grid-area: dashboard;
-    padding: 5px;
     display: grid;
+    grid-gap: 1px;
     grid-template-areas: 
     "main-header"
     "traffic"
@@ -50,9 +47,7 @@
     "message-user"
     "settings";
     @include mq($med) {
-        padding: 20px;
         grid-template-columns: 50%;
-        // grid-template-rows: repeat(6, minmax(200px, auto));
         grid-template-areas:
         "main-header main-header"
         "traffic traffic"
@@ -64,10 +59,39 @@
 }
 
 .main-header {
-    grid-area: main-header;
+    display: grid;
+    grid-template-columns: 25% auto;
+    grid-template-rows: minmax(3.5em, auto);
+    grid-template-areas: 
+    "headline searchbar"
+    "alert-banner alert-banner"
 }
 
+.main-header {
+    grid-area: main-header;
+}
+//.main-header child elements
+.headline {
+    grid-area: headline;
+    justify-self: center;
+    margin-top: -1em;
+    padding-top: 1em;
+}
+
+.main-header-search {
+    grid-area: searchbar;
+    padding-top: 1em;
+    margin-top: -1em;
+}
+
+#alert {
+    grid-area: alert-banner;
+}
+
+//.main-header child elements
+
 .traffic {
+    margin-top: -1px;
     grid-area: traffic;
 }
 
@@ -81,25 +105,35 @@
 
 .social-status {
     grid-area: social-status;
-    background-color: turquoise;
 }
 
 .new-members {
     grid-area: new-members;
-    background-color: violet;
 }
 
 .recent-activity {
     grid-area: recent-activity;
-    background-color: skyblue;
 }
 
 .message-user {
     grid-area: message-user;
-    background-color: yellowgreen;
 }
 
 .settings {
     grid-area: settings;
-    background-color: blue;
+}
+
+.settings:after,
+.message-user::after {
+    position:relative;
+    content: " ";
+    display:block;
+    height: 4em;
+    background-color: $color-white;
+}
+
+.main-header, .traffic, .daily-traffic, .mobile-users, .social-status, 
+.new-members, .recent-activity, .message-user, .settings {
+    background-color: $color-white;
+    padding: 1em;
 }

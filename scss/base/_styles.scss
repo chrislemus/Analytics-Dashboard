@@ -1,11 +1,5 @@
-* {
-    box-sizing: border-box;
-}
-
-
-
 .widget-container-full, .widget-container-half {
-    width: 95vw;
+    width: 90vw;
 }
 
 //===========================
@@ -36,11 +30,82 @@
     border-left: 1.2px solid $color-secondary;
 }
 
+.bell-container {
+    position: relative;
+}
+
 .bell-icon {
     margin-right: 1em;
     height: 1.5em;
     width: 1.5em;
+    fill: $color-white;
+    :hover {
+        cursor: pointer;
+        fill: $color-dark-grey;
+        stroke: transparent;
+        stroke-width: 100px;
+    }
+    
 }
+
+#bell-on {
+    display: none;
+    height: 7px;
+    width: 7px;
+    position: absolute;
+    right: 38%;
+    top: 1%;
+    background-color: $color-green;
+    border-radius: 50%;
+}
+
+
+#notifications {
+    position: absolute;
+    top: 65%;
+    right: -330%;
+    @include mq($med) {
+        right: -60%;
+    }
+    background-color: $color-bg-grey;
+    padding: .2em 1em;
+    min-width: 20em;
+    flex-direction: column;
+    // width: auto;
+}
+
+.no-show {
+    display: none;
+}
+
+.notification-row {
+    display: flex;
+    border-bottom: 1px solid $color-dark-grey;
+    justify-content: flex-start;
+    .row-left {
+        height: 7px;
+        width: 7px;
+        background-color: $color-green;
+        border-radius: 50%;
+        align-self: center;
+        margin-right: .5em;
+    }
+    p:hover {
+        cursor: pointer;
+    }
+}
+
+#notification-row-close {
+    margin-left: auto;
+    padding: .2em;
+    font-weight: bold;
+    border-radius: .2em;
+    &:hover{
+        background-color: $color-red;
+        color: $color-white;
+    }
+}
+
 
 .admin-pic {
     margin-right: 5px;
@@ -63,25 +128,199 @@
     justify-content: space-between;
     padding-left: 10px;
     padding-right: 10px;
+    margin-top: 10px;
+    border-radius: .1em;
 }
 
 //===========================
-//===== main dashboard styles =========
+//===== main header search =========
 //===========================
 
-.divider-x:after {
-    position:relative;
-    content: " ";
-    display:block;
-    height:40px;
+.main-header-search {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 1em;
+    // margin-right: -1em;
+    justify-items: center;
+    background-color: $color-bg-grey;
     border-bottom: 1px solid $color-dark-grey;
-    left: -5px;
-    width: calc(100% + 5px);
-    @include mq($lg) {
-        left: -20px;
-        width: calc(100% + 40px);
+    border-left: 1px solid $color-dark-grey;
+    border-radius: 0 0 0 3px;
+    input {
+        margin-left: auto;
+        margin-right: 2em;
+        height: 2em;
+        background-color: $color-white;
+        padding: .5em;
+        border: 1px solid $color-dark-grey;
+        border-radius: 5px;
+        width: 40%;
     }
 }
-.divider-y {
-    border-right: 1px solid black;
+
+//===========================
+//===== social styles =========
+//===========================
+
+.social-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-bottom: 20px;
+    justify-content: space-between;
+    flex-basis: auto;
+    @include mq($lg) {
+        flex-direction: row;
+    }
 }
+
+.social-container {
+    padding: 10px;
+    margin: 3px;
+    background-color: $color-bg-grey;
+    border: 1px solid $color-dark-grey;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-basis: 30%;
+}
+
+.social-image {
+    background-color: $color-primary;
+    padding: 20px;
+    border-radius: 50%;
+    display: flex;
+    & svg {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.social-text {
+    padding-left: 20px;
+}
+
+//===========================
+//===== new members styles =========
+//===========================
+
+.members-container, 
+.activity-container {
+    position: relative;
+    color: black;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: auto;
+    // @include mq($med) {
+    //     height: 3.2em;
+    // }
+    img {
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+    }
+    p:first-child {
+        font-size: 1em;
+        font-weight: 500;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    div {
+        // font-size: .7em;
+        margin-top: auto;
+        margin-bottom: auto;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding-left: .5em;
+        margin-right: auto;
+        height: auto;
+        width: 70%;
+        @include mq($med) {
+            width: 50%;
+        }
+        @include mq($lg) {
+            width: 70%;
+        }
+    }
+    & a {
+        font-size: 1em;
+        color: $color-primary;
+    }
+    > p:last-child {
+        margin: 1px;
+    }
+}
+
+.activity-container {
+    
+    p:first-child {
+        margin-bottom: -.9em;
+    }
+    > p:last-child {
+        position: absolute;
+        left: 95%;
+        top: 40%;
+        transform: scale(2,3);
+        margin-top: 0 ;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    p:nth-child(2) {
+        font-weight: 200;
+    }
+
+}
+
+.new-members,
+.recent-activity {
+    > div:not(:last-child) {
+        padding-bottom: 1em;
+        border-bottom: 1px solid $color-dark-grey;
+    }    
+}
+
+//===========================
+//===== message user =========
+//===========================
+#search-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    width: 100%;
+}
+
+#user-search-results {
+    list-style: none;
+    top: 70%;
+    // left: -6.5%;
+    justify-self: center;
+    position: absolute;
+    display: none;
+    padding: 0;
+    margin: 0;
+    width: 90%;
+
+    li {
+        font-weight: bold;
+        padding: 1em;
+        padding-bottom: .5em;
+        background-color: $color-bg-grey;
+        width: 100%;
+        // border-bottom: 1px solid $color-dark-grey;
+    }
+}
+
+#user-search-results li:hover{
+    color: $color-white;
+    background-color: dodgerblue;
+    cursor: pointer;
+}
+
+

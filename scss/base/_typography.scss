@@ -12,9 +12,29 @@ a {
 }
 
 .dashboard {
-    color: $color-dark-grey;
+    color: rgb(95, 95, 95);
+}
+
+.headline {
+    font-size: 1.2em;
 }
 
 .alert-banner {
     color: $color-white;
+}
+
+#notifications {
+    color: $color-dark-grey;
+}
+
+.social-text p:first-child {
+    font-weight: bold;
+    color: $color-primary;
+    margin: auto;
+}
+
+.social-text p:last-child {
+    font-size: 3em;
+    color: black;
+    margin: auto;
 }

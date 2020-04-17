@@ -1,13 +1,21 @@
 
-.main-nav ul {
+.main-nav-ul {
     list-style-type: none;
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-around;
+    margin: 0 auto;
+    padding: 0;
     @include mq($med) {
+        padding-top: 10px;
         flex-direction: column;
-        padding: 0;
+    }
+    li{
+        padding: 20px 10px;
+        @include mq($med) {
+            margin-right: auto;
+        }
     }
 }
 
@@ -18,18 +26,54 @@
     padding-right: 1em;
 }   
 
-.main-nav li {
-    padding-bottom: 20px;
-}
-
-.active-page {
-    background-color: red;
-}
-
 //  ------ICONS------
 
 .nav-icons {
     fill: $color-bg-grey;
     width: 20px;
     height: 20px;
+}
+
+
+//====================================
+//============ TRAFFIC NAV ==========
+//====================================
+
+.traffic-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.traffic-nav {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em;
+}
+
+.traffic-nav-link {
+    margin: 1em;
+    font-weight: bold;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.data-show {
+    background-color: $color-green;
+    padding: .3em 1em;
+    color: $color-white;
+    border-radius: 40px;
+}
+
+.nav-selected {
+    border-bottom: 3px solid $color-green;
+    @include mq($med) {
+        border-bottom: none;
+        border-left: 3px solid $color-green;
+    }
 }
